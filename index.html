@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuromi Neon-Vibe OS v4.0.4 (Auth Patch)</title>
+    <title>Kuromi Neon-Vibe OS v4.0.5 (Production Final)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -92,7 +92,7 @@
     <!-- Loading Overlay -->
     <div id="loading-overlay" class="fixed inset-0 flex flex-col items-center justify-center">
         <span class="w-16 h-16 bg-pink-500 floating mb-4" style="mask: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'black\'><path d=\'M12 2C7.03 2 3 6.03 3 11c0 3.11 1.58 5.84 4 7.41V22h2v-2h2v2h2v-2h2v2h2v-3.59c2.42-1.57 4-4.3 4-7.41 0-4.97-4.03-9-9-9zm-4 11c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm8 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z\'/></svg>') no-repeat center; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'black\'><path d=\'M12 2C7.03 2 3 6.03 3 11c0 3.11 1.58 5.84 4 7.41V22h2v-2h2v2h2v-2h2v2h2v-3.59c2.42-1.57 4-4.3 4-7.41 0-4.97-4.03-9-9-9zm-4 11c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm8 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z\'/></svg>') no-repeat center;"></span>
-        <p class="mono text-pink-400 animate-pulse tracking-widest uppercase">Initializing_Quantum_Link...</p>
+        <p class="mono text-pink-400 animate-pulse tracking-widest uppercase text-center px-4">Initializing_Cloud_Quantum_Sync...<br><span class="text-[10px] opacity-60">กำลังเชื่อมต่อฐานข้อมูลคลาวด์</span></p>
     </div>
 
     <!-- Top Header -->
@@ -111,8 +111,8 @@
                 <p class="text-[10px] text-purple-300 uppercase tracking-[0.3em] mb-1 mono font-bold">Total_Net_Balance</p>
                 <span class="thai-sub text-purple-400 mb-2 font-bold">ยอดคงเหลือสุทธิ</span>
                 <h2 id="header-total-balance" class="text-4xl font-bold neon-glow-pink mono">฿0.00</h2>
-                <p class="text-[8px] mono text-gray-500 mt-2 italic">STATUS: <span id="auth-status" class="text-yellow-400 animate-pulse">CONNECTING_CORE...</span></p>
-                <p class="text-[6px] mono text-gray-700 mt-1 uppercase" id="display-user-id">USER_NULL</p>
+                <p class="text-[8px] mono text-gray-500 mt-2 italic">STATUS: <span id="auth-status" class="text-yellow-400 animate-pulse">SYNCING...</span></p>
+                <p class="text-[6px] mono text-gray-700 mt-1 uppercase" id="display-user-id">USER_NOT_LINKED</p>
             </div>
         </div>
     </div>
@@ -120,9 +120,9 @@
     <!-- Navigation Bar -->
     <div class="px-6 mb-6">
         <div class="flex glass-card p-1">
-            <button onclick="switchView('dashboard')" id="nav-dashboard" class="flex-1 py-3 rounded-xl font-bold text-gray-500 transition-all mono text-[9px] tracking-wider uppercase">INSIGHTS</button>
-            <button onclick="switchView('tracker')" id="nav-tracker" class="flex-1 py-3 rounded-xl font-bold text-gray-500 transition-all mono text-[9px] tracking-wider uppercase">RECORDS</button>
-            <button onclick="switchView('planned')" id="nav-planned" class="flex-1 py-3 rounded-xl font-bold text-gray-500 transition-all mono text-[9px] tracking-wider uppercase">PLANNED</button>
+            <button onclick="switchView('dashboard')" id="nav-dashboard" class="flex-1 py-3 rounded-xl font-bold text-gray-500 transition-all mono text-[9px] tracking-wider uppercase">INSIGHTS<span class="thai-sub text-[7px]">สรุป</span></button>
+            <button onclick="switchView('tracker')" id="nav-tracker" class="flex-1 py-3 rounded-xl font-bold text-gray-500 transition-all mono text-[9px] tracking-wider uppercase">RECORDS<span class="thai-sub text-[7px]">บันทึก</span></button>
+            <button onclick="switchView('planned')" id="nav-planned" class="flex-1 py-3 rounded-xl font-bold text-gray-500 transition-all mono text-[9px] tracking-wider uppercase">PLANNED<span class="thai-sub text-[7px]">แผน</span></button>
         </div>
     </div>
 
@@ -131,16 +131,16 @@
         <div class="glass-card p-5 border-pink-400/30 relative overflow-hidden scanline-card">
             <div class="flex items-center gap-2 mb-2">
                 <span class="w-2 h-2 bg-pink-500 rounded-full animate-ping"></span>
-                <h3 class="text-[9px] text-pink-300 mono font-bold uppercase tracking-widest italic">Live_Cloud_Analysis</h3>
+                <h3 class="text-[9px] text-pink-300 mono font-bold uppercase tracking-widest italic">Analysis_Logs <span class="thai-sub text-[7px]">บันทึกวิเคราะห์</span></h3>
             </div>
-            <p id="ai-advice" class="text-xs leading-relaxed text-gray-200 mono italic font-light italic text-center">SCANNING_DATA...</p>
+            <p id="ai-advice" class="text-xs leading-relaxed text-gray-200 mono italic font-light italic text-center">INITIALIZING...</p>
         </div>
 
         <div class="glass-card p-5 border-green-500/30 bg-green-500/5">
             <div class="flex justify-between items-start mb-2">
                 <div>
                     <h3 class="text-[10px] text-green-400 mono font-bold uppercase tracking-widest">Recommended_Savings</h3>
-                    <span class="thai-sub text-green-500 font-bold">เงินออมที่แนะนำ (20%)</span>
+                    <span class="thai-sub text-green-500 font-bold italic">สัดส่วนเงินออมที่แนะนำ (20%)</span>
                 </div>
                 <span class="text-xl">💰</span>
             </div>
@@ -148,22 +148,22 @@
         </div>
 
         <div id="funding-gap-container" class="glass-card p-5 border-yellow-500/30 bg-yellow-500/5 hidden animate-pulse">
-            <h3 class="text-[10px] text-yellow-500 mono font-bold uppercase tracking-widest text-center">Required_Credits_To_Find</h3>
+            <h3 class="text-[10px] text-yellow-500 mono font-bold uppercase tracking-widest text-center">Required_Credits_To_Find <span class="thai-sub text-[7px]">จำนวนที่ต้องหาเพิ่ม</span></h3>
             <p id="dash-required-amount" class="text-3xl font-bold text-yellow-400 mono mt-2 text-center">฿0.00</p>
         </div>
 
         <div class="glass-card p-5 border-white/10 bg-black/20">
-            <h3 class="text-[9px] text-purple-300 mono font-bold uppercase tracking-widest mb-4 italic">Flow_Trend</h3>
+            <h3 class="text-[9px] text-purple-300 mono font-bold uppercase tracking-widest mb-4 italic">Flow_Trend <span class="thai-sub text-[7px]">แนวโน้มการเงิน</span></h3>
             <div class="h-48 w-full"><canvas id="financeChart"></canvas></div>
         </div>
 
         <div class="grid grid-cols-2 gap-4">
             <div class="glass-card p-5 bg-green-500/5 border-green-500/20 text-center">
-                <h4 class="text-[8px] text-green-400 mono uppercase mb-1">Inflow</h4>
+                <h4 class="text-[8px] text-green-400 mono uppercase mb-1">Inflow <span class="thai-sub text-[7px]">รายรับรวม</span></h4>
                 <p id="dash-income" class="text-lg font-bold text-green-300 mono">+฿0</p>
             </div>
             <div class="glass-card p-5 bg-red-500/5 border-red-500/20 text-center">
-                <h4 class="text-[8px] text-red-400 mono uppercase mb-1">Outflow</h4>
+                <h4 class="text-[8px] text-red-400 mono uppercase mb-1">Outflow <span class="thai-sub text-[7px]">รายจ่ายรวม</span></h4>
                 <p id="dash-expense" class="text-lg font-bold text-red-300 mono">-฿0</p>
             </div>
         </div>
@@ -171,24 +171,24 @@
         <div class="glass-card p-6 bg-gradient-to-br from-white/5 to-transparent border-purple-400/40 scanline-card">
             <div class="flex justify-between items-start mb-6">
                 <div>
-                    <h3 class="text-[10px] text-purple-300 mono font-bold uppercase tracking-[0.2em]">Power_Core</h3>
+                    <h3 class="text-[10px] text-purple-300 mono font-bold uppercase tracking-[0.2em]">Power_Core <span class="thai-sub text-[7px]">เป้าหมายออมเงิน</span></h3>
                     <div id="goal-progress-text" class="text-2xl font-bold neon-glow-pink mono mt-1">฿0 / ฿0</div>
                 </div>
-                <button onclick="editSavingGoal()" class="text-[8px] bg-purple-500 text-white px-3 py-1 rounded-full mono font-bold uppercase">Config</button>
+                <button onclick="editSavingGoal()" class="text-[8px] bg-purple-500 text-white px-3 py-1 rounded-full mono font-bold uppercase hover:brightness-125 transition-all">Config</button>
             </div>
             <div class="relative h-4 w-full bg-black/40 rounded-full overflow-hidden border border-white/10 p-0.5">
                 <div id="goal-bar" class="h-full bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 shadow-[0_0_20px_rgba(255,77,148,0.5)] transition-all duration-1000" style="width: 0%"></div>
             </div>
-            <p id="goal-status-msg" class="text-[9px] text-gray-400 mono mt-3 italic text-center uppercase tracking-widest italic">Syncing...</p>
+            <p id="goal-status-msg" class="text-[9px] text-gray-400 mono mt-3 italic text-center uppercase tracking-widest italic">Syncing_Core...</p>
         </div>
 
         <div class="glass-card p-5 text-center bg-black/20">
-            <h3 class="text-[9px] text-gray-500 mono uppercase tracking-widest mb-1">Current_Net_Assets</h3>
+            <h3 class="text-[9px] text-gray-500 mono uppercase tracking-widest mb-1">Net_Assets <span class="thai-sub text-[7px]">ทรัพย์สินสุทธิ</span></h3>
             <h2 id="dash-total-balance" class="text-3xl font-bold text-white mono tracking-tighter">฿0.00</h2>
         </div>
 
         <div id="sector-container" class="glass-card p-6 border-white/5 bg-black/10">
-            <h3 class="text-[9px] text-purple-300 mono font-bold uppercase tracking-widest mb-6 border-b border-white/5 pb-2">Sector_Distribution</h3>
+            <h3 class="text-[9px] text-purple-300 mono font-bold uppercase tracking-widest mb-6 border-b border-white/5 pb-2">Sector_Distribution <span class="thai-sub text-[7px]">สัดส่วนรายจ่าย</span></h3>
             <div id="category-bars" class="space-y-6"></div>
         </div>
     </div>
@@ -196,8 +196,8 @@
     <!-- VIEW: TRACKER -->
     <div id="view-tracker" class="hidden px-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div class="flex justify-between items-center mb-6 px-1">
-            <h3 class="font-bold text-purple-200 flex items-center gap-2 mono text-xs uppercase tracking-widest italic">History_Logs</h3>
-            <button onclick="clearAllData()" class="text-[9px] text-gray-500 hover:text-pink-400 mono uppercase">Purge_Cloud</button>
+            <h3 class="font-bold text-purple-200 flex items-center gap-2 mono text-xs uppercase tracking-widest italic">History_Logs <span class="thai-sub text-[7px]">ประวัติบันทึก</span></h3>
+            <button onclick="clearAllData()" class="text-[9px] text-gray-500 hover:text-pink-400 mono uppercase border border-white/10 px-2 py-1 rounded">Purge_Cloud</button>
         </div>
         <div id="transaction-list" class="space-y-4 pb-20"></div>
     </div>
@@ -205,7 +205,7 @@
     <!-- VIEW: PLANNED -->
     <div id="view-planned" class="hidden px-6 animate-in fade-in duration-500">
         <div class="flex justify-between items-center mb-6 px-1">
-            <div><h3 class="font-bold text-cyan-400 flex items-center gap-2 mono text-xs uppercase tracking-widest italic">Future_Plans</h3></div>
+            <div><h3 class="font-bold text-cyan-400 flex items-center gap-2 mono text-xs uppercase tracking-widest italic">Future_Plans <span class="thai-sub text-[7px]">แผนล่วงหน้า</span></h3></div>
             <div class="text-right">
                 <p id="total-planned" class="text-lg font-bold text-cyan-300 mono">฿0</p>
                 <span class="thai-sub text-[8px]">ยอดแผนค้างจ่าย</span>
@@ -216,33 +216,36 @@
 
     <!-- FAB -->
     <div id="floating-btn" class="fixed bottom-10 left-0 right-0 px-10 flex justify-center z-40">
-        <button onclick="toggleModal(true)" id="main-fab" class="btn-vibrant text-white w-full py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 border border-white/30 tracking-widest mono uppercase"><span>+</span> Entry</button>
+        <button onclick="toggleModal(true)" id="main-fab" class="btn-vibrant text-white w-full py-4 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 border border-white/30 tracking-widest mono uppercase"><span>+</span> New_Entry</button>
     </div>
 
     <!-- Modal Entry -->
     <div id="modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
         <div class="glass-card w-full max-w-md rounded-t-[35px] sm:rounded-[25px] p-8 border-purple-400/40 bg-[#1a0b2e]/95">
             <div class="flex justify-between items-center mb-8">
-                <h3 id="modal-title" class="text-xl font-bold neon-glow-purple mono italic tracking-widest uppercase italic">Input_Feed</h3>
+                <div>
+                    <h3 id="modal-title" class="text-xl font-bold neon-glow-purple mono italic tracking-widest uppercase italic">Input_Feed</h3>
+                    <span id="modal-subtitle" class="thai-sub text-purple-300 italic">นำเข้าข้อมูลใหม่ไปยังระบบ</span>
+                </div>
                 <button onclick="toggleModal(false)" class="text-gray-400 text-3xl">&times;</button>
             </div>
             <div class="space-y-5">
                 <div class="grid grid-cols-2 gap-4">
-                    <button id="btn-income" onclick="setType('income')" class="py-3 rounded-xl font-bold transition-all mono text-[10px]">INCOME</button>
-                    <button id="btn-expense" onclick="setType('expense')" class="py-3 rounded-xl font-bold transition-all mono text-[10px]">EXPENSE</button>
+                    <button id="btn-income" onclick="setType('income')" class="py-3 rounded-xl font-bold transition-all mono text-[10px]">INCOME (รายรับ)</button>
+                    <button id="btn-expense" onclick="setType('expense')" class="py-3 rounded-xl font-bold transition-all mono text-[10px]">EXPENSE (รายจ่าย)</button>
                 </div>
-                <div><label class="block text-[8px] font-bold text-purple-400 uppercase mono">Target_Date</label><input type="date" id="entry-date" class="cyber-input mono text-sm"></div>
-                <div><label class="block text-[8px] font-bold text-purple-400 uppercase mono">Category</label><input type="text" id="category" list="category-options" placeholder="TYPE..." class="cyber-input mono text-sm"><datalist id="category-options"></datalist></div>
-                <div><label class="block text-[8px] font-bold text-purple-400 uppercase mono">Subject</label><input type="text" id="desc" placeholder="DESC..." class="cyber-input mono text-sm"></div>
+                <div><label class="block text-[8px] font-bold text-purple-400 uppercase mono">Target_Date (วันที่)</label><input type="date" id="entry-date" class="cyber-input mono text-sm"></div>
+                <div><label class="block text-[8px] font-bold text-purple-400 uppercase mono">Category (หมวดหมู่)</label><input type="text" id="category" list="category-options" placeholder="SELECT_OR_TYPE..." class="cyber-input mono text-sm"><datalist id="category-options"></datalist></div>
+                <div><label class="block text-[8px] font-bold text-purple-400 uppercase mono">Subject (ชื่อรายการ)</label><input type="text" id="desc" placeholder="ENTITY_NAME..." class="cyber-input mono text-sm"></div>
                 <div>
-                    <label class="block text-[8px] font-bold text-purple-400 uppercase mono">Amount</label>
+                    <label class="block text-[8px] font-bold text-purple-400 uppercase mono">Amount (จำนวนเงิน)</label>
                     <input type="number" id="amount" oninput="recommendSavings()" placeholder="0.00" class="cyber-input mono text-pink-400 font-bold text-2xl">
                     <div id="income-recommend-msg" class="hidden mt-2 p-2 bg-green-500/10 border border-green-500/20 rounded-lg">
-                        <p class="text-[9px] text-green-400 mono italic uppercase">KUROMI_TIP: ควรแบ่งเก็บ <span id="recommend-val" class="font-bold underline">฿0</span> นะคะ 🖤</p>
+                        <p class="text-[9px] text-green-400 mono italic uppercase">KUROMI_TIP: ควรแบ่งเก็บ <span id="recommend-val" class="font-bold underline">฿0</span> (20%) นะคะ 🖤</p>
                     </div>
                 </div>
-                <div id="planned-toggle-container" class="flex items-center gap-3 px-2 py-1"><input type="checkbox" id="is-planned" class="w-4 h-4 accent-pink-500"><label for="is-planned" class="text-xs mono text-purple-300 uppercase">Set_As_Planned</label></div>
-                <button onclick="saveTransaction()" class="w-full btn-vibrant text-white py-5 rounded-2xl font-bold text-lg border border-white/20 mono uppercase tracking-widest italic">Save_To_Cloud 💀</button>
+                <div id="planned-toggle-container" class="flex items-center gap-3 px-2 py-1"><input type="checkbox" id="is-planned" class="w-4 h-4 accent-pink-500"><label for="is-planned" class="text-xs mono text-purple-300 uppercase italic">Set_As_Planned (ตั้งเป็นแผน)</label></div>
+                <button onclick="saveTransaction()" class="w-full btn-vibrant text-white py-5 rounded-2xl font-bold text-lg border border-white/20 mono uppercase tracking-widest italic">Upload_To_Cloud 💀</button>
             </div>
         </div>
     </div>
@@ -250,7 +253,8 @@
     <!-- UI Overlay for Saving Goal -->
     <div id="goal-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="glass-card w-full max-w-sm p-8 border-pink-400/40 bg-[#1a0b2e]/95">
-            <h3 class="text-xl font-bold neon-glow-pink mono italic mb-6 uppercase">Goal_Config</h3>
+            <h3 class="text-xl font-bold neon-glow-pink mono italic mb-6 uppercase tracking-widest">Goal_Config</h3>
+            <label class="block text-[9px] font-bold text-purple-400 uppercase mono mb-2">Target_Credits (เป้าหมายใหม่)</label>
             <input type="number" id="goal-input" placeholder="5000" class="cyber-input mono text-pink-400 font-bold text-2xl">
             <div class="flex gap-4 pt-6"><button onclick="document.getElementById('goal-modal').classList.add('hidden')" class="flex-1 text-gray-500 mono text-[10px] uppercase">Abort</button><button onclick="saveSavingGoal()" class="flex-1 btn-vibrant py-3 rounded-xl text-white font-bold mono text-[10px] uppercase">Commit</button></div>
         </div>
@@ -263,7 +267,7 @@
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, collection, onSnapshot, addDoc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase Config
+        // Production Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyBnDMjOCv6SHYmo58We5dsIe4Q24LM8yWY",
             authDomain: "work-money-65a46.firebaseapp.com",
@@ -286,26 +290,23 @@
         let currentView = 'dashboard';
         let myChart = null;
 
-        // Helper functions
+        const categoriesData = {
+            income: [{ icon: '💎', label: 'SALARY' }, { icon: '🛸', label: 'REINFORCE' }, { icon: '📦', label: 'TRADE' }],
+            expense: [{ icon: '🍱', label: 'FOOD' }, { icon: '🚌', label: 'TRAVEL' }, { icon: '🛍️', label: 'SHOP' }, { icon: '🎮', label: 'PLAY' }, { icon: '💊', label: 'MED' }]
+        };
+
         const safeSetText = (id, text) => { const el = document.getElementById(id); if (el) el.innerText = text; };
         const safeSetHTML = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
 
-        // RULE 3 - Auth Flow Fix for Custom Token Mismatch
         async function startApp() {
             try {
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    try {
-                        await signInWithCustomToken(auth, __initial_auth_token);
-                    } catch (tokenErr) {
-                        console.warn("Token mismatch, falling back to anonymous...");
-                        await signInAnonymously(auth);
-                    }
-                } else {
-                    await signInAnonymously(auth);
-                }
+                    try { await signInWithCustomToken(auth, __initial_auth_token); } 
+                    catch (e) { await signInAnonymously(auth); }
+                } else { await signInAnonymously(auth); }
             } catch (err) {
-                console.error("Auth system failure", err);
-                safeSetText('auth-status', "OFFLINE_CORE_RETRY");
+                console.error("Auth System Error", err);
+                safeSetText('auth-status', "OFFLINE_CORE");
             }
         }
 
@@ -322,7 +323,6 @@
 
         function setupListeners() {
             if (!user) return;
-            // RULE 1 - Use artifact paths correctly
             const tCol = collection(db, 'artifacts', appId, 'users', user.uid, 'transactions');
             const pCol = collection(db, 'artifacts', appId, 'users', user.uid, 'planned');
             const sDoc = doc(db, 'artifacts', appId, 'users', user.uid, 'settings', 'user_pref');
@@ -331,13 +331,13 @@
                 transactions = snap.docs.map(d => ({ id: d.id, ...d.data() }));
                 transactions.sort((a, b) => new Date(b.rawDate) - new Date(a.rawDate));
                 updateUI();
-            }, (err) => console.error("Firestore Permission denied on Transactions", err));
+            }, (err) => showToast("CLOUD_SYNC_ERROR"));
 
             onSnapshot(pCol, (snap) => {
                 plannedTransactions = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-                plannedTransactions.sort((a, b) => new Date(a.rawDate) - new Date(a.rawDate));
+                plannedTransactions.sort((a, b) => new Date(a.rawDate) - new Date(b.rawDate));
                 updateUI();
-            }, (err) => console.error("Firestore Permission denied on Planned", err));
+            }, (err) => showToast("PLAN_SYNC_ERROR"));
 
             onSnapshot(sDoc, (snap) => {
                 if (snap.exists()) {
@@ -347,7 +347,6 @@
             });
         }
 
-        // Exposed Window Functions
         window.switchView = (view) => {
             currentView = view;
             ['tracker', 'dashboard', 'planned'].forEach(v => {
@@ -365,11 +364,8 @@
             if (show) {
                 m.classList.remove('hidden');
                 updateCategoryDropdown();
-                const descInput = document.getElementById('desc');
-                if (descInput) descInput.focus();
-                const dateInput = document.getElementById('entry-date');
-                if (dateInput) dateInput.value = new Date().toISOString().split('T')[0];
-                
+                if (document.getElementById('desc')) document.getElementById('desc').focus();
+                if (document.getElementById('entry-date')) document.getElementById('entry-date').value = new Date().toISOString().split('T')[0];
                 if(currentView === 'planned') {
                     safeSetText('modal-title', 'PLANNED_ENTRY');
                     document.getElementById('is-planned').checked = true;
@@ -401,10 +397,10 @@
             try { 
                 await addDoc(collection(db, 'artifacts', appId, 'users', user.uid, p.checked ? 'planned' : 'transactions'), payload); 
                 toggleModal(false); a.value = ''; c.value = ''; d.value = ''; showToast("QUANTUM_SAVE_SUCCESS"); 
-            } catch (e) { showToast("UPLINK_DENIED"); }
+            } catch (e) { showToast("SYNC_DENIED"); }
         };
 
-        window.deleteTransaction = async (id) => { if (!user) return; await deleteDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'transactions', id)); showToast("LOG_PURGED"); };
+        window.deleteTransaction = async (id) => { if (!user) return; await deleteDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'transactions', id)); showToast("PURGED"); };
         window.deletePlanned = async (id) => { if (!user) return; await deleteDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'planned', id)); showToast("PLAN_PURGED"); };
 
         window.convertToActual = async (id) => {
@@ -417,11 +413,11 @@
                 delete actual.id;
                 await addDoc(collection(db, 'artifacts', appId, 'users', user.uid, 'transactions'), actual);
                 showToast("SYNC_COMPLETED");
-            } catch (e) { showToast("TRANS_FAILED"); }
+            } catch (e) { showToast("ERROR_CONVERTING"); }
         };
 
         window.editSavingGoal = () => { document.getElementById('goal-modal').classList.remove('hidden'); document.getElementById('goal-input').value = savingGoal; };
-        window.saveSavingGoal = async () => { if (!user) return; const v = parseFloat(document.getElementById('goal-input').value); if (!isNaN(v) && v >= 0) { await setDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'settings', 'user_pref'), { savingGoal: v }); document.getElementById('goal-modal').classList.add('hidden'); showToast("GOAL_LOCKED"); } };
+        window.saveSavingGoal = async () => { if (!user) return; const v = parseFloat(document.getElementById('goal-input').value); if (!isNaN(v) && v >= 0) { await setDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'settings', 'user_pref'), { savingGoal: v }); document.getElementById('goal-modal').classList.add('hidden'); showToast("GOAL_SYNCED"); } };
 
         function updateCategoryDropdown() {
             const dl = document.getElementById('category-options');
@@ -431,10 +427,7 @@
         }
 
         window.recommendSavings = () => {
-            const aInput = document.getElementById('amount');
-            const a = aInput ? parseFloat(aInput.value) : 0;
-            const m = document.getElementById('income-recommend-msg');
-            const r = document.getElementById('recommend-val');
+            const a = parseFloat(document.getElementById('amount').value), m = document.getElementById('income-recommend-msg'), r = document.getElementById('recommend-val');
             if (currentType === 'income' && !isNaN(a) && a > 0) { if (m) m.classList.remove('hidden'); if (r) r.innerText = `฿${(a * 0.2).toLocaleString()}`; } else { if (m) m.classList.add('hidden'); }
         };
 
@@ -459,7 +452,7 @@
             const gb = document.getElementById('goal-bar'), p = savingGoal > 0 ? Math.min(100, (Math.max(0, net) / savingGoal * 100)) : 0;
             if (gb) gb.style.width = p + '%';
             safeSetText('goal-progress-text', `฿${Math.max(0, net).toLocaleString()} / ฿${savingGoal.toLocaleString()}`);
-            safeSetText('goal-status-msg', savingGoal <= 0 ? "Target_Not_Set" : (net >= savingGoal ? "GOAL_ACCOMPLISHED 💖" : `Sync: ${p.toFixed(1)}%`));
+            safeSetText('goal-status-msg', savingGoal <= 0 ? "Target_Not_Set" : (net >= savingGoal ? "GOAL_ACCOMPLISHED 💖" : `Core_Stability: ${p.toFixed(1)}%`));
 
             const sfc = [...transactions].sort((a, b) => new Date(a.rawDate) - new Date(b.rawDate)).slice(-7);
             if (sfc.length > 0) initChart(sfc.map(t => t.date), sfc.map(t => t.amount > 0 ? t.amount : 0), sfc.map(t => t.amount < 0 ? Math.abs(t.amount) : 0));
@@ -467,13 +460,13 @@
             const now = new Date(), d = now.getDate(), dim = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate(), r = dim - d;
             const pred = (Math.abs(exp) / (d || 1) * r) + Math.abs(exp) + planP, fc = inc - pred;
             let aMsg = (transactions.length === 0 && plannedTransactions.length === 0) ? "ป้อนข้อมูลเพื่อเริ่มการวิเคราะห์นะคะ 🖤" : 
-                       fc < 0 ? `⚠️ ติดลบ ฿${Math.abs(fc).toFixed(0)}!` : `เหลือ ฿${fc.toFixed(0)} 💖`;
+                       fc < 0 ? `⚠️ วิกฤต! คาดว่าจะติดลบ ฿${Math.abs(fc).toFixed(0)}!` : `สมดุล! คาดว่าสิ้นเดือนจะเหลือ ฿${fc.toFixed(0)} 💖`;
             safeSetHTML('ai-advice', `> ANALYSIS_LOG: <span class="${fc < 0 ? 'text-red-400' : 'text-green-400'}">${aMsg}</span>`);
 
             if (currentView === 'tracker') {
                 const l = document.getElementById('transaction-list');
                 if (l) {
-                    l.innerHTML = transactions.length ? '' : '<p class="text-center py-16 text-gray-600 text-[10px] mono uppercase">Empty_Log</p>';
+                    l.innerHTML = transactions.length ? '' : '<p class="text-center py-16 text-gray-600 text-[10px] mono uppercase italic">No_Historical_Data</p>';
                     transactions.forEach(t => {
                         const ie = t.amount < 0, ca = t.category.split(' ');
                         l.innerHTML += `<div class="glass-card p-5 flex justify-between items-center border-l-4 ${ie ? 'border-pink-500/60' : 'border-green-500/60'} animate-in fade-in zoom-in-95"><div class="flex items-center gap-4"><div class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-xl border border-white/5">${ca[0]}</div><div><p class="font-bold text-white leading-tight mono text-sm">${t.desc}</p><p class="text-[9px] text-purple-400 mt-1 mono opacity-60">${t.date} // ${ca[1] || ''}</p></div></div><div class="flex items-center gap-4"><p class="font-bold text-base mono ${ie ? 'text-pink-400' : 'text-green-400'}">${ie ? '' : '+'}${t.amount.toLocaleString()}</p><button onclick="deleteTransaction('${t.id}')" class="text-gray-700 hover:text-pink-500 p-1">🗑️</button></div></div>`;
@@ -483,10 +476,10 @@
                 const pl = document.getElementById('planned-list');
                 safeSetText('total-planned', `฿${planP.toLocaleString()}`);
                 if (pl) {
-                    pl.innerHTML = plannedTransactions.length ? '' : '<p class="text-center py-16 text-gray-600 text-[10px] mono uppercase">No_Plans</p>';
+                    pl.innerHTML = plannedTransactions.length ? '' : '<p class="text-center py-16 text-gray-600 text-[10px] mono uppercase italic">Future_Plans_Not_Found</p>';
                     plannedTransactions.forEach(t => {
                         const ic = t.status === 'completed', ca = (t.category || "🔘 อื่นๆ").split(' ');
-                        pl.innerHTML += `<div class="glass-card p-5 border-l-4 ${ic ? 'border-gray-500/50 opacity-50' : 'border-cyan-400/60'} animate-in fade-in zoom-in-95"><div class="flex justify-between items-center mb-3"><div class="flex items-center gap-3"><div class="w-10 h-10 ${ic ? 'bg-gray-500/10' : 'bg-cyan-400/10'} rounded-xl flex items-center justify-center text-xl border ${ic ? 'border-gray-500/20' : 'border-cyan-400/20'}">${ca[0]}</div><div class="${ic ? 'line-through text-gray-500' : ''}"><p class="font-bold text-white leading-tight mono text-sm">${t.desc}</p><p class="text-[9px] text-cyan-500 mt-1 mono opacity-60 uppercase">${t.date}</p></div></div><p class="font-bold text-lg mono ${ic ? 'text-gray-400 line-through' : 'text-cyan-300'}">฿${Math.abs(t.amount).toLocaleString()}</p></div><div class="flex gap-2 mt-2 border-t border-white/5 pt-3">${!ic ? `<button onclick="convertToActual('${t.id}')" class="flex-1 bg-cyan-500/20 text-cyan-300 py-2 rounded-lg text-[10px] font-bold mono border border-cyan-500/30 uppercase hover:bg-cyan-500/40 transition-all">PAID_IT</button>` : `<span class="flex-1 py-2 text-center text-[9px] mono text-green-400/70 font-bold tracking-[0.2em]">MISSION_ACCOMPLISHED</span>`}<button onclick="deletePlanned('${t.id}')" class="px-4 bg-red-500/10 text-red-400 py-2 rounded-lg text-[10px] mono border border-red-500/20">REMOVE</button></div></div>`;
+                        pl.innerHTML += `<div class="glass-card p-5 border-l-4 ${ic ? 'border-gray-500/50 opacity-40' : 'border-cyan-400/60'} animate-in fade-in zoom-in-95"><div class="flex justify-between items-center mb-3"><div class="flex items-center gap-3"><div class="w-10 h-10 ${ic ? 'bg-gray-500/10' : 'bg-cyan-400/10'} rounded-xl flex items-center justify-center text-xl border ${ic ? 'border-gray-500/20' : 'border-cyan-400/20'}">${ca[0]}</div><div class="${ic ? 'line-through opacity-50' : ''}"><p class="font-bold text-white leading-tight mono text-sm">${t.desc}</p><p class="text-[9px] text-cyan-500 mt-1 mono opacity-60 uppercase">${t.date} // CLOUD_PLAN</p></div></div><p class="font-bold text-lg mono ${ic ? 'text-gray-400 line-through' : 'text-cyan-300'}">฿${Math.abs(t.amount).toLocaleString()}</p></div><div class="flex gap-2 mt-2 border-t border-white/5 pt-3">${!ic ? `<button onclick="convertToActual('${t.id}')" class="flex-1 bg-cyan-500/20 text-cyan-300 py-2 rounded-lg text-[10px] font-bold mono border border-cyan-500/30 hover:bg-cyan-500/40 transition-all">PAID_IT</button>` : `<span class="flex-1 py-2 text-center text-[9px] mono text-green-400/70 font-bold tracking-[0.2em]">MISSION_COMPLETED</span>`}<button onclick="deletePlanned('${t.id}')" class="px-4 bg-red-500/10 text-red-400 py-2 rounded-lg text-[10px] mono border border-red-500/20">REMOVE</button></div></div>`;
                     });
                 }
             }
@@ -494,7 +487,7 @@
             const bc = document.getElementById('category-bars');
             if (bc && currentView === 'dashboard') {
                 const cs = {}; transactions.filter(t => t.amount < 0).forEach(t => { cs[t.category] = (cs[t.category] || 0) + Math.abs(t.amount); });
-                bc.innerHTML = Object.keys(cs).length ? '' : '<p class="text-center text-gray-600 text-[10px] mono py-4 uppercase">No_Distribution_Data</p>';
+                bc.innerHTML = Object.keys(cs).length ? '' : '<p class="text-center text-gray-600 text-[10px] mono py-4 uppercase italic">No_Sector_Logs</p>';
                 Object.entries(cs).sort((a,b) => b[1]-a[1]).forEach(([k, v]) => {
                     const pc = Math.abs(exp) > 0 ? (v / Math.abs(exp) * 100).toFixed(0) : 0;
                     bc.innerHTML += `<div><div class="flex justify-between text-[9px] mb-2 mono"><span class="text-purple-300 uppercase">${k}</span><span class="text-pink-400">${pc}% // ฿${v.toLocaleString()}</span></div><div class="w-full bg-white/5 h-1.5 rounded-full overflow-hidden border border-white/5"><div class="h-full bg-gradient-to-r from-purple-500 to-pink-500" style="width: ${pc}%"></div></div></div>`;
@@ -518,9 +511,7 @@
         window.clearAllData = async () => {
             if (confirm("ต้องการล้างประวัติบันทึกทั้งหมด (Records) ออกจาก Cloud หรือไม่?")) {
                 showToast("PURGING_LOGS...");
-                for (let t of transactions) {
-                    await deleteDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'transactions', t.id));
-                }
+                for (let t of transactions) { await deleteDoc(doc(db, 'artifacts', appId, 'users', user.uid, 'transactions', t.id)); }
                 showToast("RECORDS_WIPED");
             }
         };
